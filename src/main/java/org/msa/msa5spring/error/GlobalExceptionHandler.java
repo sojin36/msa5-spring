@@ -40,10 +40,13 @@ public class GlobalExceptionHandler {
                         (fieldError) -> fieldError.getDefaultMessage() != null ? fieldError.getDefaultMessage() : "유효하지 않은 값입니다.",
                         (existing, replacement) -> existing
                 ));
+        log.debug("{}\\n{}", "***유효성 체크 에러 ***", errors);
+
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new GlobalResponseDTO<>(
                 "E01", "유효성 체크 에러", errors
         )
         );
+
     }
 //
 //
